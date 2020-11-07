@@ -2,10 +2,10 @@
 #include <vector> 
 #include <fstream> 
 #include <inttypes.h>
+#include <string>
+#include <experimental/filesystem>
 #include "BMP_Reader.h" 
- 
 
- 
 std::vector<unsigned char> read_bmp(std::string const &fname, int& w, int& h) { 
 	bmp_header head; 
 	std::ifstream f(fname, std::ios::binary); 
@@ -17,6 +17,9 @@ std::vector<unsigned char> read_bmp(std::string const &fname, int& w, int& h) {
  
 	w = head.width; 
 	h = head.height; 
+	std::cout <<"in the loop"<< "\n"; 
+	std::cout << "Width_i: " << w << "\n"; 
+	std::cout << "Height_i: " << h << "\n";
  
 	// lines are aligned on 4-byte boundary 
 	int lineSize = (w / 8 + (w / 8) % 4); 
